@@ -2,5 +2,5 @@
 
 Senior Data Science Class, SPRING 2020
 
-Projects Listed:
-1. 
+List of Project Ideas:
+
