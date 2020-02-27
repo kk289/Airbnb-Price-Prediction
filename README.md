@@ -2,5 +2,5 @@
 
 Senior Data Science Class, SPRING 2020
 
-List of Projects Ideas:
+Title: Mining Airbnb Dataset Using Machine Learning and R concept
 
