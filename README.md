@@ -2,5 +2,5 @@
 
 Senior Data Science Class, SPRING 2020
 
-Title: Mining Airbnb Dataset Using Machine Learning and R concept
+Title: Inside Airbnb Using Machine Learning and R concept
 
