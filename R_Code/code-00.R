@@ -127,7 +127,7 @@ create_train_test <- function(data, size = 0.75, train = TRUE){
 train_data <- create_train_test(airbnb_LA_new, 0.75, train = TRUE)
 test_data <- create_train_test(airbnb_LA_new, 0.75, train = FALSE)
 
-#checking
+#checking 
 nrow(train_data) + nrow(test_data) == nrow(airbnb_LA_new)
 
 dim(train_data)
@@ -142,6 +142,7 @@ prop.table(table(test_data$price_level))
 
 ## Build the model: Decision Tree
 
+# trying with test data set 
 fit <- rpart(price_level ~ ., data = test_data, method = 'class', control = rpart.control(cp = 0.05)) # taking alot of time to run
 rpart.plot(fit, type = 4, extra = "auto", nn = TRUE)
 
