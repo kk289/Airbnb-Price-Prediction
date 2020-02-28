@@ -23,9 +23,14 @@ setwd("/System/Volumes/Data/University of Evansville/SPRING 2020/STAT 493/Airbnb
 
 ## Importing dataset
 set.seed(123)
-airbnb_LA <- read_csv("listings.csv") %>% 
-  filter(airbnb_LA$price>0)
+airbnb_LA <- read_csv("listings.csv")
 summary(airbnb_LA)
+
+
+# dont need the listing which has price value 0
+airbnb_LA <- airbnb_LA %>% 
+  filter(price > 0)
+#View(airbnb_LA)
 
 ## Structure of dataset
 str(airbnb_LA)
@@ -137,7 +142,7 @@ prop.table(table(test_data$price_level))
 
 ## Build the model: Decision Tree
 
-fit <- rpart(price_level ~ ., data = train_data, method = 'class', control = rpart.control(cp = 0.05)) # taking alot of time to run
+fit <- rpart(price_level ~ ., data = test_data, method = 'class', control = rpart.control(cp = 0.05)) # taking alot of time to run
 rpart.plot(fit, type = 4, extra = "auto", nn = TRUE)
 
 # if upper part run then run below
