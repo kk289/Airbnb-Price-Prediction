@@ -16,7 +16,6 @@ library(ggthemes)
 library(ggExtra)
 library(glmnet)
 library(corrplot)
-library(leaflet)
 library(plotly)
 library(rpart)
 library(rpart.plot)
@@ -66,7 +65,7 @@ missing_airbnb <- airbnb_LA %>% summarise_all(~(sum(is.na(.))/n()))
 missing_airbnb <- gather(missing_airbnb, key = "variables", value = "percent_missing")
 missing_airbnb <- missing_airbnb[missing_airbnb$percent_missing > 0.0, ]
 
-theme_ms <- theme_fivethirtyeight() + theme(axis.title = element_text(), axis.title.x = element_text())
+theme_ms <- theme_fivethirtyeight() + theme(axis.title = element_text(), axis.title.x = element_text()) # new thing
 
 ggplot(missing_airbnb, aes(x = reorder(variables, percent_missing), y = percent_missing)) + 
   geom_bar(stat = "identity", fill = "red", aes(color = I('white')), size = 0.3) +
@@ -76,11 +75,10 @@ ggplot(missing_airbnb, aes(x = reorder(variables, percent_missing), y = percent_
   ggtitle("Missing Data") +
   xlab("Column name") +
   ylab("Percentage missing") +
-  annotate("text", x = 1.5, y = 0.1, label = "name has less than 0.001\n percentage missing", color = "slateblue", size = 5)
+  annotate("text", x = 1.5, y = 0.1, label = "name has less than 0.001\n percentage missing", color = "slateblue", size = 5) #new thing (learn it)
 
 # The MICE package also has a table for us to focus on the `NA` values.
 md.pattern(airbnb_LA)
-
 
 # data cleaning
 # changing NA value to 0
@@ -88,21 +86,9 @@ airbnb_LA$reviews_per_month[is.na(airbnb_LA$reviews_per_month)] <- 0
 airbnb_LA$calculated_host_listings_count[is.na(airbnb_LA$calculated_host_listings_count)] <- 0
 
 
-# Leaflet map
-pal <- colorFactor(palette = c("red", "green", "blue", "purple", "yellow"), domain = airbnb_LA$neighbourhood_group)
-
-leaflet(data = airbnb_LA) %>% 
-  addProviderTiles(providers$CartoDB.DarkMatterNoLabels) %>% 
-  addCircleMarkers(~longitude, ~latitude, color = ~pal(neighbourhood_group),
-                   weight = 1, radius=1, fillOpacity = 0.1, opacity = 0.1,
-                   label = paste("Name:", airbnb_LA$name)) %>% 
-  addLegend("bottomright", pal = pal, values = ~neighbourhood_group,
-            title = "Neighbourhood groups", opacity = 1)
-
-
 ## Machine Learning
 
-# split 'price' into 3 levels
+# split 'price' into 3 parts (low, medium, high)
 
 data_temp <- sort.int(airbnb_LA$price, decreasing = FALSE)
 
@@ -147,13 +133,14 @@ dim(test_data)
 
 prop.table(table(train_data$price_level))
 prop.table(table(test_data$price_level))
-
 # In both dataset, the amount of low price_level is the same, about 33 percent,
 
 ## Build the model: Decision Tree
 
-fit <- rpart(price_level ~ ., data = train_data, method = 'class', control = rpart.control(cp = 0.05))
+fit <- rpart(price_level ~ ., data = train_data, method = 'class', control = rpart.control(cp = 0.05)) # taking alot of time to run
 rpart.plot(fit, type = 4, extra = "auto", nn = TRUE)
+
+# if upper part run then run below
 
 # predict the price using test data
 pred <- predict(fit, newdata = test_data, type = 'response')
