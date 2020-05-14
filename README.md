@@ -2,5 +2,5 @@
 
 Senior Data Science Class, SPRING 2020
 
-Title: Inside Airbnb Using Machine Learning and R concept
+Title: A Survey on Machine Learning Techniques for Airbnb Price Prediction
 
