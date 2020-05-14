@@ -10,24 +10,24 @@ In this project, I develop a model to predict the Airbnb rental Price of Los Ang
 
 Datasets Links:
 
-1. Los Angeles Listing Dataset
+1. Los Angeles Listing Dataset:
 http://data.insideairbnb.com/united-states/ca/los-angeles/2018-12-06/visualisations/listings.csv
 
-2. Los Angeles Review Dataset
+2. Los Angeles Review Dataset:
 http://data.insideairbnb.com/united-states/ca/los-angeles/2018-12-06/visualisations/reviews.csv
 
-3. Chicago Review Dataset
+3. Chicago Review Dataset:
 http://data.insideairbnb.com/united-states/il/chicago/2018-12-13/visualisations/reviews.csv
 
-4. London Review Dataset
+4. London Review Dataset:
 http://data.insideairbnb.com/united-kingdom/england/london/2018-12-07/visualisations/reviews.csv
 
-5. Greater Manchester Review Dataset
+5. Greater Manchester Review Dataset:
 http://data.insideairbnb.com/united-kingdom/england/greater-manchester/2018-12-10/visualisations/reviews.csv
 
-6. New York Review Dataset
+6. New York Review Dataset:
 http://data.insideairbnb.com/united-states/ny/new-york-city/2018-12-06/visualisations/reviews.csv
 
-7. Boston Review Dataset
+7. Boston Review Dataset:
 http://data.insideairbnb.com/united-states/ma/boston/2018-12-13/visualisations/reviews.csv
 
